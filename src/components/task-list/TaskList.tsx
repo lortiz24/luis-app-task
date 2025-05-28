@@ -13,7 +13,7 @@ export const TaskList = ({ tasks }: TaskListProps) => {
     <ul className="flex flex-col gap-2">
       {tasks.map((task, idx) => (
         <li key={idx}>
-          <TaskItem task={task} />
+          <TaskItem task={task} onUpdate={() => {}} />
         </li>
       ))}
     </ul>

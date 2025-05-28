@@ -306,6 +306,11 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@midudev/tailwind-animations@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.npmjs.org/@midudev/tailwind-animations/-/tailwind-animations-0.2.0.tgz"
+  integrity sha512-4mktb060dA7SZz0LjMfhBT30HWPmQENwF4AJC7/etESWohe4pukST0ohC2yAePS5GNinhY3MXmZZ8//2ywafOQ==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
@@ -1427,7 +1432,7 @@ synckit@^0.11.0:
   dependencies:
     "@pkgr/core" "^0.2.4"
 
-tailwindcss@^4.1.7, tailwindcss@4.1.7:
+"tailwindcss@^3.0.0 || ^4.0.0", tailwindcss@^4.1.7, tailwindcss@4.1.7:
   version "4.1.7"
   resolved "https://registry.npmjs.org/tailwindcss/-/tailwindcss-4.1.7.tgz"
   integrity sha512-kr1o/ErIdNhTz8uzAYL7TpaUuzKIE6QPQ4qmSdxnoX/lo+5wmUHQA6h3L5yIqEImSRnAAURDirLu/BgiXGPAhg==
