@@ -3,14 +3,13 @@
 
 @theme {
   /* Colors */
-  --color-primary: #0652e0;
   --color-secondary: #220490;
   --color-bg-1: #191919;
   --color-bg-2: #121212;
   --color-text: #f6f8fe;
-  --color-pink-300: #3a015c;
-  --color-pink-50: #e5b8fe;
-  --color-pink-600: #200132;
+  --color-primary-50: #e5b8fe;
+  --color-primary-300: #3a015c;
+  --color-primary-600: #200132;
   --color-gray: #a6a6a6;
   /* Breakpoints */
 }

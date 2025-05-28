@@ -1,19 +1,27 @@
 import type { ITask } from '../../interfaces/task.interface';
 import { TaskList } from '../task-list/TaskList';
 
-interface CartOfTaskProps {
+interface List {
+  id: string;
   title: string;
-  tasks: ITask[];
+  // Agrega aquí otras propiedades de la lista si las tienes
 }
 
-export const CardOfTask = ({ title, tasks }: CartOfTaskProps) => {
+interface CardOfTaskProps {
+  list: List; // Recibe la información de la lista
+  tasks: ITask[]; // Recibe las tareas de esta lista
+  onTaskUpdate: (newTask: Partial<ITask>) => void; // Recibe la función de actualización
+  // Podrías agregar onListEdit aquí si implementas esa funcionalidad en el futuro
+}
+
+export const CardOfTask = ({ list, tasks, onTaskUpdate }: CardOfTaskProps) => {
   return (
     <div className="flex flex-col h-auto min-h-30 bg-bg-2 p-6 w-[300px] rounded-4xl">
-      <div className="h-16 px-[20px] py-[14px] flex items-center text-lg font-semibold">
-        {title}
+      <div className="h-16 px-[20px] py-[14px] flex items-center text-lg font-semibold text-text"> {/* Usamos tu variable text */}
+        {list.title} {/* Usa el título de la prop list */}
       </div>
       <div className="mt-2 px-[20px]">
-        <TaskList tasks={tasks} />
+        <TaskList tasks={tasks} onTaskUpdate={onTaskUpdate} /> {/* Pasa tasks y onTaskUpdate */}
       </div>
     </div>
   );
