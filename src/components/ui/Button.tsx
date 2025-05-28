@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Tipos para variantes y tamaños
-export type ButtonVariant = 'primary' | 'secondary' | 'danger';
+export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'text';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -16,6 +16,7 @@ const variantClasses: Record<ButtonVariant, string> = {
   primary: 'bg-primary-600/80 text-white hover:bg-primary-700/80',
   secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300',
   danger: 'bg-red-600 text-white hover:bg-red-700',
+  text: 'bg-transparent text-primary hover:underline shadow-none p-0',
 };
 
 // Clases base por tamaño
@@ -35,7 +36,9 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      className={`inline-flex items-center gap-2 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
+      className={`inline-flex items-center gap-2 
+        rounded transition-colors focus:outline-none 
+        focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 hover:cursor-pointer ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
       {...props}
     >
       {leftIcon && <span className="flex items-center">{leftIcon}</span>}
