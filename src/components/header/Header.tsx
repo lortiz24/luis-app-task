@@ -7,7 +7,7 @@ interface HeaderProps {
 export const Header = ({ onIconClick }: HeaderProps) => {
   return (
     <div
-      className="h-16 bg-sky-200 px-8
+      className="h-16  px-8
      flex items-center justify-between"
     >
       <Bars3Icon className="size-6" onClick={onIconClick} />

@@ -9,7 +9,7 @@ export const AppLayout = () => {
   const toggleSidebar = () => setSidebarOpen((open) => !open);
 
   return (
-    <div className="min-h-screen bg-gray-900 flex flex-col">
+    <div className="min-h-screen bg-bg-1 flex flex-col text-white">
       <Header onIconClick={toggleSidebar} />
       <div className="flex flex-1 flex-row">
         <div className={`transition-all duration-300 overflow-hidden ${sidebarOpen ? 'w-64' : 'w-0'}`}>
