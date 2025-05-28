@@ -7,6 +7,7 @@ interface Props {
   task: ITask;
   onUpdate: (newTask: Partial<ITask>) => void;
 }
+const iconSize = 20;
 
 export const TaskItem = ({ task, onUpdate }: Props) => {
   const [expanded, setExpanded] = useState(false);
@@ -40,49 +41,44 @@ export const TaskItem = ({ task, onUpdate }: Props) => {
   return (
     <div
       // El clic en el contenedor expande/colapsa la descripción
-      className="py-2 rounded-lg bg-bg flex items-start cursor-pointer" // Agregamos cursor-pointer para indicar que es clickeable
+      className={`py-2 rounded-lg bg-bg flex items-start cursor-pointer ${expanded && 'bg-pink-50/5'}`} // Agregamos cursor-pointer para indicar que es clickeable
       onClick={() => setExpanded((e) => !e)}
       tabIndex={0}
       role="button"
     >
       <div className="flex flex-nowrap w-full box-border transition-[padding-left] duration-250">
-        <div className="relative mx-3 mt-[2px] flex-shrink-0">
-          {/* Botón/Icono de completar */}
+        <div className="relative mx-3 flex-shrink-0 ">
           <button
             className="cursor-pointer group relative w-7 h-7 flex items-center justify-center transition-all duration-200"
             onClick={handleComplete}
             tabIndex={-1} // No tabulable para evitar doble foco con el div padre
           >
-            {/* Renderiza el icono basado en task.completed */}
             {!task.completed ? (
               <>
-                {/* Icono por defecto (visible, se oculta en hover si no está completada) */}
                 <span className="absolute inset-0 flex items-center justify-center transition-opacity duration-200 group-hover:opacity-0">
-                  <Icon name="task-circle" size={20} /> {/* Asumo que Icon 'task-circle' es tu círculo vacío */}
+                  <Icon name="task-circle" className={`w-${iconSize / 4} h-${iconSize / 4}`} />
                 </span>
-                {/* CheckIcon (oculto, se muestra en hover si no está completada) */}
                 <span className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                  <CheckIcon className="w-5 h-5" /> {/* Ajusta tamaño si es necesario */}
+                  <CheckIcon className={`w-${iconSize / 4} h-${iconSize / 4}`} />
                 </span>
               </>
             ) : (
-              // Icono de completado con animación (solo visible si task.completed es true)
-              <span
-                className={`absolute inset-0 flex items-center justify-center text-primary-50 ${
-                  justCompleted ? 'animate-rubber-band' : ''
-                }`}
-              >
-                <CheckCircleIcon className="w-7 h-7" /> {/* Icono círculo con check */}
-              </span>
+              <>
+                <span
+                  className={`absolute inset-0 flex items-center justify-center text-primary-50 ${
+                    justCompleted ? 'animate-rubber-band' : ''
+                  }`}
+                >
+                  <CheckCircleIcon className={`w-${iconSize / 4} h-${iconSize / 4}`} />
+                </span>
+              </>
             )}
           </button>
         </div>
-        <div className="flex flex-col gap-1 flex-1 pr-4"> {/* Añadimos padding a la derecha */}
-          <p className="font-semibold text-xl leading-none text-text">{task.title}</p> {/* Usamos tu variable text */}
+        <div className="flex flex-col gap-1 flex-1 pr-4">
+          <p className="font-semibold text-sm  text-text">{task.title}</p> {/* Usamos tu variable text */}
           {task.description && ( // Solo muestra la descripción si existe
-             <p className={`text-sm text-gray ${expanded ? '' : 'line-clamp-2'}`}>
-               {task.description}
-             </p>
+            <p className={`text-xs text-gray ${expanded ? '' : 'line-clamp-2'}`}>{task.description}</p>
           )}
         </div>
       </div>
