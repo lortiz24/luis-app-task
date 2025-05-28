@@ -9,4 +9,6 @@ export interface ITask {
   create_at?: string; // timestamp en formato ISO
   update_at?: string; // timestamp en formato ISO
   completed: boolean
+  day: string //todo: temporal
+  time: string //todo: temporal
 }

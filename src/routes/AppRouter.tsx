@@ -1,8 +1,9 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AppLayout } from '../layouts/AppLayout';
 import { ListPage } from '../pages/ListPage';
+import { WeeklyAgenda } from '../pages/WeeklyAgendaPage';
 
-const Agenda = () => <>Agenda</>;
+
 
 
 export const AppRouter = () => {
@@ -10,7 +11,7 @@ export const AppRouter = () => {
     <Routes>
       <Route path="/" element={<AppLayout />}>
         <Route path="/list" element={<ListPage />} />
-        <Route path="/agenda" element={<Agenda />} />
+        <Route path="/agenda" element={<WeeklyAgenda />} />
         <Route path="/*" element={<Navigate to={'/list'}/>} />
       </Route>
     </Routes>
