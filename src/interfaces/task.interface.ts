@@ -8,4 +8,5 @@ export interface ITask {
   scheduled_time?: string; // formato 'HH:mm:ss', solo para tareas no repetidas
   create_at?: string; // timestamp en formato ISO
   update_at?: string; // timestamp en formato ISO
+  completed: boolean
 }

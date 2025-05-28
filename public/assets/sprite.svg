@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none">
+ 
+  <!-- Icono círculo simple para tareas -->
+  <symbol id="task-circle" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+  </symbol>
+</svg>
