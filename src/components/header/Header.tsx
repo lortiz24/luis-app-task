@@ -2,6 +2,7 @@ import { Bars3Icon, ArrowRightEndOnRectangleIcon, UserIcon } from '@heroicons/re
 import { Button } from '../ui/Button';
 import { useTaskStoreBase } from '../../store/store';
 import { useAuthLogic } from '../../hooks/useAuthLogic';
+import { useAuthActions } from '../../store/hooks/useAuthActions';
 
 interface HeaderProps {
   onIconClick?: () => void;
@@ -18,12 +19,14 @@ function getInitials(name: string = '') {
 
 export const Header = ({ onIconClick }: HeaderProps) => {
   const user = useTaskStoreBase((state) => state.user);
+  const { setCheckin } = useAuthActions();
   const { signOut, loadingLogout } = useAuthLogic();
   const avatarUrl = user?.user_metadata?.avatar_url || '';
   const name = user?.user_metadata?.name || user?.email || '';
   const initials = getInitials(name);
 
-  const onLogout = () => {
+  const onLogout = async () => {
+    setCheckin(true);
     signOut();
   };
   return (
@@ -48,12 +51,7 @@ export const Header = ({ onIconClick }: HeaderProps) => {
             <p className="text-xs text-gray-400">{user?.email}</p>
           </div>
         </div>
-        <Button
-          loading={loadingLogout}
-          variant="text"
-          size="sm"
-          onClick={onLogout}
-        >
+        <Button variant="text" size="sm" onClick={onLogout}>
           <ArrowRightEndOnRectangleIcon className="h-4 w-4 mr-2" />
           <span className="hidden sm:inline">Cerrar Sesión</span>
           <span className="sm:hidden">Salir</span>

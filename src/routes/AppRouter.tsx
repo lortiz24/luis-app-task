@@ -21,9 +21,10 @@ const PublicRoute = () => {
 };
 
 export const AppRouter = () => {
-  const loading = useCheckSession();
+  const checking = useTaskStoreBase((state) => state.checking);
+  useCheckSession();
 
-  if (loading) {
+  if (checking) {
     return (
       <div className="min-h-screen bg-bg-1 flex items-center justify-center">
         <Loader />
