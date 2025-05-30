@@ -1,17 +1,16 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import type { ITask } from '../../interfaces/task.interface';
-import Icon from '../icons/Icon';
-import { CheckIcon, CheckCircleIcon } from '@heroicons/react/16/solid';
+import { TaskCheckbox } from '../task-checkbox/TaskChecbox';
 
 interface Props {
   task: ITask;
   onUpdate: (newTask: Partial<ITask>) => void;
 }
-const iconSize = 20;
 
 export const TaskItem = ({ task, onUpdate }: Props) => {
   const [expanded, setExpanded] = useState(false);
   const [justCompleted, setJustCompleted] = useState(false);
+  const itemRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (task.completed) {
@@ -20,6 +19,18 @@ export const TaskItem = ({ task, onUpdate }: Props) => {
       return () => clearTimeout(timeout);
     }
   }, [task.completed]);
+
+  // Cierra el expandido al hacer click fuera
+  useEffect(() => {
+    if (!expanded) return;
+    const handleClickOutside = (event: MouseEvent) => {
+      if (itemRef.current && !itemRef.current.contains(event.target as Node)) {
+        setExpanded(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [expanded]);
 
   const handleComplete = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -30,44 +41,33 @@ export const TaskItem = ({ task, onUpdate }: Props) => {
 
   return (
     <div
-      className={`py-2 rounded-lg bg-bg flex items-start cursor-pointer ${expanded && 'bg-pink-50/5'} hover:bg-gray-800/50`}
+      ref={itemRef}
+      className={`p-3 rounded-lg flex items-start cursor-pointer transition-colors hover:bg-gray-700/50 ${expanded ? 'bg-pink-50/5' : 'bg-bg'}`}
       onClick={() => setExpanded((e) => !e)}
       tabIndex={0}
       role="button"
     >
-      <div className="flex flex-nowrap w-full box-border transition-[padding-left] duration-250">
-        <div className="relative mx-3 flex-shrink-0 ">
-          <button
-            className="cursor-pointer group relative w-7 h-7 flex items-center justify-center transition-all duration-200"
-            onClick={handleComplete}
-            tabIndex={-1}
-          >
-            {!task.completed ? (
-              <>
-                <span className="absolute inset-0 flex items-center justify-center transition-opacity duration-200 group-hover:opacity-0">
-                  <Icon name="task-circle" className={`w-${iconSize / 4} h-${iconSize / 4}`} />
-                </span>
-                <span className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                  <CheckIcon className={`w-${iconSize / 4} h-${iconSize / 4}`} />
-                </span>
-              </>
-            ) : (
-              <>
-                <span
-                  className={`absolute inset-0 flex items-center justify-center text-primary-50 ${
-                    justCompleted ? 'animate-rubber-band' : ''
-                  }`}
-                >
-                  <CheckCircleIcon className={`w-${iconSize / 4} h-${iconSize / 4}`} />
-                </span>
-              </>
-            )}
-          </button>
+      <div className="flex flex-nowrap w-full box-border">
+        <div className="relative mx-3 flex-shrink-0">
+          <TaskCheckbox checked={task.completed} onClick={handleComplete} animating={justCompleted} size={20} />
         </div>
-        <div className="flex flex-col gap-1 flex-1 pr-4">
-          <p className="font-semibold text-sm  text-text">{task.title}</p> {/* Usamos tu variable text */}
-          {task.description && ( // Solo muestra la descripción si existe
-            <p className={`text-xs text-gray ${expanded ? '' : 'line-clamp-2'}`}>{task.description}</p>
+        <div className="flex flex-col gap-1 flex-1 pr-2">
+          <div className="flex items-center justify-between">
+            <p
+              className={`font-semibold text-sm transition-colors ${
+                task.completed ? 'text-gray-400 line-through' : 'text-gray-100'
+              }`}
+            >
+              {task.title}
+            </p>
+            {task.time && (
+              <span className="text-xs text-blue-400 font-medium bg-blue-400/10 px-2 py-1 rounded">
+                {task.time}
+              </span>
+            )}
+          </div>
+          {task.description && (
+            <p className={`text-xs text-gray-400 ${expanded ? '' : 'line-clamp-2'}`}>{task.description}</p>
           )}
         </div>
       </div>

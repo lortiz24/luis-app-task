@@ -33,7 +33,6 @@ const initialListsData = [
       {
         id: '3',
         title: 'Hacer ejercicio',
-        description: 'Salir a correr 30 minutos',
         user_id: 'usuario1',
         list_id: 'lista1',
         completed: false,

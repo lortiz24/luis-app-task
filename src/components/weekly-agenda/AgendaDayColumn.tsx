@@ -1,6 +1,6 @@
 import React from "react";
 import type { ITask } from "../../interfaces/task.interface";
-import { AgendaTaskItem } from "./AgendaTaskItem";
+import { TaskItem } from "../task-item/TaskItem";
 
 interface Props {
   day: string;
@@ -10,7 +10,6 @@ interface Props {
 }
 
 export const AgendaDayColumn: React.FC<Props> = ({ day, dayIndex, tasks, onTaskUpdate }) => {
-  // Ordena tareas: primero con hora, luego sin hora
   const sortedTasks = [
     ...tasks.filter((t) => t.scheduled_time).sort((a, b) => (a.scheduled_time! > b.scheduled_time! ? 1 : -1)),
     ...tasks.filter((t) => !t.scheduled_time),
@@ -19,7 +18,6 @@ export const AgendaDayColumn: React.FC<Props> = ({ day, dayIndex, tasks, onTaskU
   const completedCount = tasks.filter((t) => t.completed).length;
   const isToday = dayIndex === new Date().getDay() - 1;
 
-  // Utilidad para obtener la fecha del día
   const getDateForDay = (dayIdx: number) => {
     const today = new Date();
     const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay() + 1));
@@ -58,7 +56,7 @@ export const AgendaDayColumn: React.FC<Props> = ({ day, dayIndex, tasks, onTaskU
       <div className="flex-1 overflow-y-auto p-4 space-y-3">
         {sortedTasks.length > 0 ? (
           sortedTasks.map((task) => (
-            <AgendaTaskItem key={task.id} task={task} onUpdate={onTaskUpdate} />
+            <TaskItem key={task.id} task={task} onUpdate={onTaskUpdate} />
           ))
         ) : (
           <div className="text-center py-8 text-gray-500">

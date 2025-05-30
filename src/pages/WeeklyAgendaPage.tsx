@@ -3,17 +3,17 @@
 import React, { useState } from 'react';
 import { AgendaDayColumn } from '../components/weekly-agenda/AgendaDayColumn';
 import type { ITask } from '../interfaces/task.interface';
-import { AgendaFooter } from '../components/weekly-agenda/AgendaFooter';
+import { HeaderWeeklyAgenda } from '../components/weekly-agenda/HeaderWeeklyAgenda';
 
 export const WeeklyAgenda: React.FC = () => {
   const daysOfWeek = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
 
-  // Sample tasks data
   const [tasks, setTasks] = useState<ITask[]>([
     {
       id: '1',
       title: 'Reunión de equipo',
-      description: 'Revisar el progreso del proyecto y planificar las próximas tareas',
+      description:
+        'Revisar el progreso del proyecto y planificar las próximas tareas, incluyendo la asignación de responsabilidades, estimación de tiempos, identificación de dependencias y posibles riesgos. Preparar la presentación del estado actual para los stakeholders',
       completed: false,
       day: 'Lunes',
       time: '09:00',
@@ -155,10 +155,11 @@ export const WeeklyAgenda: React.FC = () => {
 
   return (
     <div className="h-full flex flex-col">
-      <div className="flex-shrink-0 p-6 border-b border-gray-700">
-        <h1 className="text-3xl font-bold text-gray-100 mb-2">Agenda Semanal</h1>
-        <p className="text-gray-400">Organiza tus tareas por día de la semana</p>
-      </div>
+      <HeaderWeeklyAgenda
+        total={tasks.length}
+        completed={tasks.filter((task) => task.completed).length}
+        pending={tasks.filter((task) => !task.completed).length}
+      />
 
       <div className="flex-1 min-h-0 overflow-x-auto overflow-y-hidden">
         <div className="flex gap-2.5 h-full">
@@ -173,8 +174,6 @@ export const WeeklyAgenda: React.FC = () => {
           ))}
         </div>
       </div>
-
-      <AgendaFooter tasks={tasks} />
     </div>
   );
 };
