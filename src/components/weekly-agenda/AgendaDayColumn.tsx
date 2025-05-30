@@ -1,15 +1,16 @@
-import React from "react";
-import type { ITask } from "../../interfaces/task.interface";
-import { TaskItem } from "../task-item/TaskItem";
+import React from 'react';
+import type { ITask } from '../../interfaces/task.interface';
+import { TaskItem } from '../task-item/TaskItem';
 
 interface Props {
   day: string;
   dayIndex: number;
   tasks: ITask[];
   onTaskUpdate: (task: Partial<ITask>) => void;
+  firstDay?: boolean;
 }
 
-export const AgendaDayColumn: React.FC<Props> = ({ day, dayIndex, tasks, onTaskUpdate }) => {
+export const AgendaDayColumn: React.FC<Props> = ({ day, dayIndex, tasks, onTaskUpdate, firstDay }) => {
   const sortedTasks = [
     ...tasks.filter((t) => t.scheduled_time).sort((a, b) => (a.scheduled_time! > b.scheduled_time! ? 1 : -1)),
     ...tasks.filter((t) => !t.scheduled_time),
@@ -28,14 +29,14 @@ export const AgendaDayColumn: React.FC<Props> = ({ day, dayIndex, tasks, onTaskU
 
   return (
     <div
-      className={`flex-shrink-0 w-80 h-full border-r border-gray-700 flex flex-col ${
-        isToday ? "bg-blue-500/5" : ""
+      className={`flex-shrink-0 w-80 h-full border-r border-gray-700 flex flex-col ${isToday ? 'bg-blue-500/5' : ''} ${
+        firstDay ? 'border-l' : ''
       }`}
     >
-      <div className={`p-4 border-b border-gray-700 ${isToday ? "border-blue-500" : ""}`}>
+      <div className={`p-4 border-b border-gray-700 ${isToday ? 'border-blue-500' : ''}`}>
         <div className="flex items-center justify-between mb-2">
           <div>
-            <h3 className={`text-lg font-semibold ${isToday ? "text-blue-400" : "text-gray-100"}`}>{day}</h3>
+            <h3 className={`text-lg font-semibold ${isToday ? 'text-blue-400' : 'text-gray-100'}`}>{day}</h3>
             <p className="text-sm text-gray-400">{getDateForDay(dayIndex)}</p>
           </div>
           {tasks.length > 0 && (
@@ -53,11 +54,9 @@ export const AgendaDayColumn: React.FC<Props> = ({ day, dayIndex, tasks, onTaskU
           )}
         </div>
       </div>
-      <div className="flex-1 overflow-y-auto p-4 space-y-3">
+      <div className="flex-1 overflow-y-auto p-4 space-y-3 ">
         {sortedTasks.length > 0 ? (
-          sortedTasks.map((task) => (
-            <TaskItem key={task.id} task={task} onUpdate={onTaskUpdate} />
-          ))
+          sortedTasks.map((task) => <TaskItem key={task.id} task={task} onUpdate={onTaskUpdate} />)
         ) : (
           <div className="text-center py-8 text-gray-500">
             <p className="text-sm">No hay tareas programadas</p>

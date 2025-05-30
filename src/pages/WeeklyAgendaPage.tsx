@@ -162,7 +162,7 @@ export const WeeklyAgenda: React.FC = () => {
       />
 
       <div className="flex-1 min-h-0 overflow-x-auto overflow-y-hidden">
-        <div className="flex gap-2.5 h-full">
+        <div className="flex h-full">
           {daysOfWeek.map((day, idx) => (
             <AgendaDayColumn
               key={day}
@@ -170,6 +170,7 @@ export const WeeklyAgenda: React.FC = () => {
               dayIndex={idx}
               tasks={getSortedTasksForDay(day)}
               onTaskUpdate={handleTaskUpdate}
+              firstDay={idx === 0}
             />
           ))}
         </div>

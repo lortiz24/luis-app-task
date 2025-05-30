@@ -15,7 +15,7 @@ export const AppLayout = () => {
       </aside>
       <main className="flex-1 min-w-0 flex flex-col">
         <Header onIconClick={toggleSidebar} />
-        <div className="flex-1">
+        <div className="flex-1 xs:px-2 xl:px-4">
           <Outlet />
         </div>
       </main>

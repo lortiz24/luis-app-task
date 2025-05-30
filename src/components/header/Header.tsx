@@ -10,8 +10,11 @@ export const Header = ({ onIconClick }: HeaderProps) => {
       className="h-16  px-8
      flex items-center justify-between"
     >
-      <div className="flex items-center p-2 rounded-full hover:bg-gray-700/50 hover:cursor-pointer">
-        <Bars3Icon className="size-6  " onClick={onIconClick} />
+      <div
+        onClick={onIconClick}
+        className="flex items-center p-2 rounded-full hover:bg-gray-700/50 hover:cursor-pointer"
+      >
+        <Bars3Icon className="size-6  " />
       </div>
     </div>
   );
