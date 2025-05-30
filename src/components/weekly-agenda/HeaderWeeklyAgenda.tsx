@@ -8,7 +8,7 @@ interface HeaderWeeklyAgendaProps {
 
 export const HeaderWeeklyAgenda: React.FC<HeaderWeeklyAgendaProps> = ({ total, completed, pending }) => {
   return (
-    <div className="flex-shrink-0 p-6 border-b border-gray-700 flex items-center justify-between">
+    <div className="flex-shrink-0 p-6 0 flex items-center justify-between">
       <div>
         <h1 className="text-3xl font-bold text-gray-100 mb-2">Agenda Semanal</h1>
         <p className="text-gray-400">Organiza tus tareas por día de la semana</p>

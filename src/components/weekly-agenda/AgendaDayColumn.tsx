@@ -28,12 +28,8 @@ export const AgendaDayColumn: React.FC<Props> = ({ day, dayIndex, tasks, onTaskU
   };
 
   return (
-    <div
-      className={`flex-shrink-0 w-80 h-full border-r border-gray-700 flex flex-col ${isToday ? 'bg-blue-500/5' : ''} ${
-        firstDay ? 'border-l' : ''
-      }`}
-    >
-      <div className={`p-4 border-b border-gray-700 ${isToday ? 'border-blue-500' : ''}`}>
+    <div className={`flex-shrink-0 w-80 h-full  bg-bg-2/70 rounded-xl flex flex-col ${isToday ? 'bg-blue-500/5' : ''}`}>
+      <div className={`p-4 ${isToday ? 'border-blue-500' : ''}`}>
         <div className="flex items-center justify-between mb-2">
           <div>
             <h3 className={`text-lg font-semibold ${isToday ? 'text-blue-400' : 'text-gray-100'}`}>{day}</h3>

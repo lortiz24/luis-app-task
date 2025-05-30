@@ -160,7 +160,7 @@ export const WeeklyAgenda: React.FC = () => {
       />
 
       <div className="flex-1 min-h-0 overflow-x-auto overflow-y-hidden">
-        <div className="flex h-full">
+        <div className="flex h-full gap-3">
           {daysOfWeek.map((day, idx) => (
             <AgendaDayColumn
               key={day}

@@ -14,7 +14,7 @@ interface CardOfTaskProps {
 
 export const CardOfTask = ({ list, tasks, onTaskUpdate }: CardOfTaskProps) => {
   return (
-    <div className="flex flex-col h-auto min-h-30 bg-bg-2 w-90 rounded-3xl px-3 py-2">
+    <div className="flex flex-col h-auto min-h-30 bg-bg-2 w-90 rounded-xl px-3 py-2">
       <div className="h-16 px-5 py-4 flex items-center text-lg font-semibold text-text">
         {list.title}
       </div>
