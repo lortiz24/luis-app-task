@@ -6,6 +6,7 @@ import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import { useTaskStoreBase } from '../store/store';
 import { useCheckSession } from '../hooks/useCheckSession';
+import { Loader } from '../components/ui/Loader';
 
 // Guard para rutas privadas
 const PrivateRoute = () => {
@@ -20,7 +21,16 @@ const PublicRoute = () => {
 };
 
 export const AppRouter = () => {
-  useCheckSession();
+  const loading = useCheckSession();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-bg-1 flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+  }
+
   return (
     <Routes>
       <Route element={<PublicRoute />}>
