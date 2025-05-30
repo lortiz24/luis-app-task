@@ -24,7 +24,7 @@ export const Sidebar = () => {
       </Button>
 
       <nav className="flex flex-col gap-2">
-        <MenuLink title="All task" to="/list" leftIcon={<CheckIcon className="text-white w-5 h-5" />} />
+        <MenuLink title="All task" to="/list" leftIcon={<CheckIcon className="text-white w-5 h-5 " />} />
 
         <MenuLink title="Agenda" to="/agenda" leftIcon={<CalendarIcon className="text-white w-5 h-5" />} />
       </nav>

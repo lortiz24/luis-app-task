@@ -34,7 +34,6 @@ export const AgendaDayColumn: React.FC<Props> = ({ day, dayIndex, tasks, onTaskU
         isToday ? "bg-blue-500/5" : ""
       }`}
     >
-      {/* Header del día */}
       <div className={`p-4 border-b border-gray-700 ${isToday ? "border-blue-500" : ""}`}>
         <div className="flex items-center justify-between mb-2">
           <div>
@@ -56,7 +55,6 @@ export const AgendaDayColumn: React.FC<Props> = ({ day, dayIndex, tasks, onTaskU
           )}
         </div>
       </div>
-      {/* Lista de tareas */}
       <div className="flex-1 overflow-y-auto p-4 space-y-3">
         {sortedTasks.length > 0 ? (
           sortedTasks.map((task) => (
