@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useState } from 'react';
 import { AgendaDayColumn } from '../components/weekly-agenda/AgendaDayColumn';
 import type { ITask } from '../interfaces/task.interface';

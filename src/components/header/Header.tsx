@@ -18,7 +18,7 @@ function getInitials(name: string = '') {
 
 export const Header = ({ onIconClick }: HeaderProps) => {
   const user = useTaskStoreBase((state) => state.user);
-  const { signOut } = useAuthLogic();
+  const { signOut, loadingLogout } = useAuthLogic();
   const avatarUrl = user?.user_metadata?.avatar_url || '';
   const name = user?.user_metadata?.name || user?.email || '';
   const initials = getInitials(name);
@@ -49,10 +49,10 @@ export const Header = ({ onIconClick }: HeaderProps) => {
           </div>
         </div>
         <Button
-          variant="secondary"
+          loading={loadingLogout}
+          variant="text"
           size="sm"
           onClick={onLogout}
-          className="border-gray-600 bg-gray-700 text-gray-100 hover:bg-gray-600 hover:text-white"
         >
           <ArrowRightEndOnRectangleIcon className="h-4 w-4 mr-2" />
           <span className="hidden sm:inline">Cerrar Sesión</span>

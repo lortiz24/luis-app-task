@@ -1,7 +1,13 @@
+import { useState } from 'react';
 import { supabase } from '../config/supabaseClient';
 
 export const useAuthLogic = () => {
+  const [loadingRegister, setLoadingRegister] = useState(false);
+  const [loadingLogin, setLoadingLogin] = useState(false);
+  const [loadingLogout, setLoadingLogout] = useState(false);
+
   const registerUser = async (fullName: string, email: string, password: string) => {
+    setLoadingRegister(true);
     const { data, error } = await supabase.auth.signUp({
       email: email.toLowerCase(),
       password: password,
@@ -11,34 +17,30 @@ export const useAuthLogic = () => {
         },
       },
     });
-
+    setLoadingRegister(false);
     if (error) {
       console.error('Error signing up: ', error);
       return { success: false, error };
     }
-
     return { success: true, data };
   };
 
   // Sign in
   const loginUser = async (email: string, password: string) => {
+    setLoadingLogin(true);
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email: email.toLowerCase(),
         password: password,
       });
-
-      // Handle Supabase error explicitly
+      setLoadingLogin(false);
       if (error) {
         console.error('Sign-in error:', error.message);
         return { success: false, error: error.message };
       }
-
-      // If no error, return success
-      console.log('Sign-in success:', data);
-      return { success: true, data }; // Return the user data
-    } catch (error) {
-      // Handle unexpected issues
+      return { success: true, data };
+    } catch (error: any) {
+      setLoadingLogin(false);
       console.error('Unexpected error during sign-in:', error.message);
       return {
         success: false,
@@ -46,12 +48,23 @@ export const useAuthLogic = () => {
       };
     }
   };
+
   // Sign out
   async function signOut() {
+    setLoadingLogout(true);
     const { error } = await supabase.auth.signOut();
+    setLoadingLogout(false);
     if (error) {
       console.error('Error signing out:', error);
     }
   }
-  return { registerUser, loginUser, signOut };
+
+  return {
+    registerUser,
+    loginUser,
+    signOut,
+    loadingRegister,
+    loadingLogin,
+    loadingLogout,
+  };
 };

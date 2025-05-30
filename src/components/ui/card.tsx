@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const Card: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className = '', ...props }) => (
-  <div className={`rounded-lg border bg-white shadow-sm ${className}`} {...props} />
+  <div className={`rounded-lg border  shadow-sm ${className}`} {...props} />
 );
 
 export const CardHeader: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className = '', ...props }) => (
@@ -13,7 +13,7 @@ export const CardTitle: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({ 
 );
 
 export const CardDescription: React.FC<React.HTMLAttributes<HTMLParagraphElement>> = ({ className = '', ...props }) => (
-  <p className={`text-sm text-gray-500 ${className}`} {...props} />
+  <p className={`text-sm  ${className}`} {...props} />
 );
 
 export const CardContent: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className = '', ...props }) => (
@@ -22,4 +22,4 @@ export const CardContent: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ cl
 
 export const CardFooter: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className = '', ...props }) => (
   <div className={`border-t px-6 py-4 ${className}`} {...props} />
-); 
+);

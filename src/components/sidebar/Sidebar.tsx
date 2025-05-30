@@ -8,20 +8,16 @@ export const Sidebar = () => {
   const [visibleLists, setVisibleLists] = useState<string[]>(['1', '2']);
 
   const handleToggleList = (id: string) => {
-    setVisibleLists((prev) =>
-      prev.includes(id) ? prev.filter((lid) => lid !== id) : [...prev, id]
-    );
+    setVisibleLists((prev) => (prev.includes(id) ? prev.filter((lid) => lid !== id) : [...prev, id]));
   };
 
   return (
     <div className="w-64  h-[calc(100vh-4rem)] py-3 px-2 gap-6 flex flex-col">
-      <Button
-        variant='text'
-        
-        leftIcon={<PlusIcon className="text-white w-5 h-5" />}
-      >
-        Create task
-      </Button>
+      <div>
+        <Button variant="text" leftIcon={<PlusIcon className="text-white w-5 h-5" />}>
+          Create task
+        </Button>
+      </div>
 
       <nav className="flex flex-col gap-2">
         <MenuLink title="All task" to="/list" leftIcon={<CheckIcon className="text-white w-5 h-5 " />} />

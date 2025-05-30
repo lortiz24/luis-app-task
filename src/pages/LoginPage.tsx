@@ -13,8 +13,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const { loginUser } = useAuthLogic();
+  const { loginUser, loadingLogin } = useAuthLogic();
   const navigate = useNavigate();
 
   const onNavigateToRegister = () => {
@@ -23,18 +22,13 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-
-    // Simular delay de autenticación
-    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     loginUser(email, password);
-    setIsLoading(false);
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md bg-gray-800 border-gray-700">
+    <div className="min-h-screen bg-bg-1 flex items-center justify-center p-4">
+      <Card className="w-full max-w-md bg-bg-2">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-center text-gray-100">Iniciar Sesión</CardTitle>
           <CardDescription className="text-center text-gray-400">
@@ -55,7 +49,6 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
 
@@ -85,8 +78,8 @@ export default function LoginPage() {
           </CardContent>
 
           <CardFooter className="flex flex-col space-y-4">
-            <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white" disabled={isLoading}>
-              {isLoading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
+            <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white" disabled={loadingLogin}>
+              {loadingLogin ? 'Iniciando sesión...' : 'Iniciar Sesión'}
             </Button>
 
             <div className="text-center text-sm">
