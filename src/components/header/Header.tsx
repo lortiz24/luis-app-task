@@ -39,7 +39,7 @@ export const Header = ({ onIconClick }: HeaderProps) => {
       </div>
       <div className="flex items-center space-x-4">
         <div className="flex items-center space-x-3">
-          <div className="h-8 w-8 rounded-full bg-blue-600 flex items-center justify-center overflow-hidden">
+          <div className="h-8 w-8 rounded-full bg-primary-dark flex items-center justify-center overflow-hidden">
             {avatarUrl ? (
               <img src={avatarUrl} alt={name} className="h-8 w-8 object-cover" />
             ) : (

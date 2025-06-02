@@ -64,7 +64,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 pr-10"
+                  className="bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-primary-normal focus:ring-primary-normal pr-10"
                 />
                 <button
                   type="button"
@@ -78,7 +78,7 @@ export default function LoginPage() {
           </CardContent>
 
           <CardFooter className="flex flex-col space-y-4">
-            <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white" disabled={loadingLogin}>
+            <Button type="submit" className="w-full bg-primary-dark hover:bg-blue-700 text-white" disabled={loadingLogin}>
               {loadingLogin ? 'Iniciando sesión...' : 'Iniciar Sesión'}
             </Button>
 
@@ -87,7 +87,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={onNavigateToRegister}
-                className="text-blue-400 hover:text-blue-300 underline font-medium"
+                className="text-primary-light hover:text-blue-300 underline font-medium"
               >
                 Regístrate aquí
               </button>

@@ -79,7 +79,7 @@ export const NewTaskForm: React.FC<NewTaskFormProps> = ({ lists }) => {
           <Form.Control asChild>
             <Select.Root name="listId" required>
               <Select.Trigger
-                className="w-full flex items-center justify-between rounded-md border border-gray-700 bg-gray-800 px-3 py-2 text-gray-100 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm placeholder-gray-400"
+                className="w-full flex items-center justify-between rounded-md border border-gray-700 bg-gray-800 px-3 py-2 text-gray-100 shadow-sm focus:border-primary-normal focus:ring-2 focus:ring-primary-normal sm:text-sm placeholder-gray-400"
                 id="listId"
               >
                 <Select.Value placeholder="Selecciona una lista" />
@@ -97,10 +97,10 @@ export const NewTaskForm: React.FC<NewTaskFormProps> = ({ lists }) => {
                       <Select.Item
                         key={list.id}
                         value={list.id}
-                        className="cursor-pointer select-none rounded px-3 py-2 text-gray-100 hover:bg-primary-600/20 focus:bg-primary-600/30 data-[state=checked]:bg-primary-600/40 flex items-center gap-2"
+                        className="cursor-pointer select-none rounded px-3 py-2 text-gray-100 hover:bg-primary-dark/20 focus:bg-primary-dark/30 data-[state=checked]:bg-primary-dark/40 flex items-center gap-2"
                       >
                         <Select.ItemText>{list.title}</Select.ItemText>
-                        <Select.ItemIndicator className="ml-auto text-primary-400">
+                        <Select.ItemIndicator className="ml-auto text-primary-light">
                           <CheckIcon />
                         </Select.ItemIndicator>
                       </Select.Item>
@@ -119,7 +119,7 @@ export const NewTaskForm: React.FC<NewTaskFormProps> = ({ lists }) => {
       {/* Botón de submit */}
       <button
         type="submit"
-        className="w-full mt-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded-md transition-colors"
+        className="w-full mt-4 bg-primary-dark hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded-md transition-colors"
       >
         Crear tarea
       </button>

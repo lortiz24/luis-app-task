@@ -17,7 +17,7 @@ export const HeaderWeeklyAgenda: React.FC<HeaderWeeklyAgendaProps> = ({ total, c
       {/* Estadísticas */}
       <div className="flex space-x-6">
         <div className="text-center">
-          <div className="text-2xl font-bold text-blue-400">{total}</div>
+          <div className="text-2xl font-bold text-primary-light">{total}</div>
           <div className="text-xs text-gray-400">Total</div>
         </div>
         <div className="text-center">

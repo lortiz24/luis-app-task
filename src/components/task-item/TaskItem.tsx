@@ -61,7 +61,7 @@ export const TaskItem = ({ task, onUpdate }: Props) => {
               {task.title}
             </p>
             {task.time && (
-              <span className="text-xs text-blue-400 font-medium bg-blue-400/10 px-2 py-1 rounded">
+              <span className="text-xs text-primary-light font-medium bg-primary-light/10 px-2 py-1 rounded">
                 {task.time}
               </span>
             )}
