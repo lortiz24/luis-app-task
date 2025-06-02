@@ -61,7 +61,7 @@ export const NewTaskForm: React.FC<NewTaskFormProps> = ({ lists }) => {
               type="checkbox"
               checked={allDay}
               onChange={(e) => setAllDay(e.target.checked)}
-              className="accent-primary-600 w-4 h-4 rounded focus:ring focus:ring-primary-400"
+              className="accent-primary-dark w-4 h-4 rounded focus:ring focus:ring-primary-light"
             />
           </Form.Control>
           <Label htmlFor="allDay" className="text-gray-200 select-none cursor-pointer">

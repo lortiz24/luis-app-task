@@ -32,7 +32,7 @@ export const TaskCheckbox: React.FC<TaskCheckboxProps> = ({
         </>
       ) : (
         <span
-          className={`absolute inset-0 flex items-center justify-center text-primary-50 ${
+          className={`absolute inset-0 flex items-center justify-center text-green-400 ${
             animating ? 'animate-rubber-band' : ''
           }`}
         >

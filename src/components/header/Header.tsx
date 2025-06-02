@@ -47,8 +47,8 @@ export const Header = ({ onIconClick }: HeaderProps) => {
             )}
           </div>
           <div className="hidden sm:block">
-            <p className="text-sm font-medium text-gray-100">{name}</p>
-            <p className="text-xs text-gray-400">{user?.email}</p>
+            <p className="text-sm font-medium text-main-text">{name}</p>
+            <p className="text-xs text-alt-text">{user?.email}</p>
           </div>
         </div>
         <Button variant="text" size="sm" onClick={onLogout}>

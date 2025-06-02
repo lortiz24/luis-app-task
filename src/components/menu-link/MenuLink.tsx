@@ -21,7 +21,7 @@ export const MenuLink: React.FC<MenuLinkProps> = ({
         `
         flex items-center gap-2 px-4 py-1 cursor-pointer
         text-primary transition-colors rounded-3xl
-        ${isActive ? 'bg-primary-50/40 font-semibold' : 'hover:bg-gray-700/50'}
+        ${isActive ? 'bg-primary-light/40 font-semibold' : 'hover:bg-gray-700/50'}
         ${className}
         `
       }

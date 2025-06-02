@@ -2,11 +2,8 @@
 @plugin "@midudev/tailwind-animations";
 
 @theme {
-  /* Colors */
-  --color-secondary: #220490;
-  --color-bg-1: #111827;
-  --color-bg-2: #1F2937;
-  --color-text: #f6f8fe;
+  /** Colors */
+
   --color-primary-50: #deaef9;
   --color-primary-100: #d69bf8;
   --color-primary-200: #c87af6;
@@ -18,5 +15,23 @@
   --color-primary-800: #5b0a8a;
   --color-primary-900: #420764;
   --color-primary-950: #380655;
-}
 
+  /** Backgrounds */
+
+  --color-bg-1: #111827;
+  --color-bg-2: #1f2937;
+
+  /** Principal*/
+
+  --color-primary-normal: #3b82f6;
+  --color-primary-dark: #2563eb;
+  --color-primary-light: #60a5fa;
+  --color-primary-bg: #1e3a8a0d;
+
+  /** Textos */
+
+  --color-main-text: #f9fafb /* Texto principal */;
+  --color-alt-text: #9ca3af /* Texto secundario */;
+  --color-muted-text: #6b7280 /* Texto deshabilitado */;
+
+}
