@@ -1,8 +1,8 @@
-import { CheckIcon, PlusIcon, CalendarIcon } from '@heroicons/react/16/solid';
-import { Button } from '../ui/Button';
+import { CheckIcon, CalendarIcon } from '@heroicons/react/16/solid';
 import { MenuLink } from '../menu-link/MenuLink';
 import { MenuListAcordeon } from '../menu-list-accordion/MenuListAcordeon';
 import { useState } from 'react';
+import { CreateNewTask } from './CreateNewTask';
 
 export const Sidebar = () => {
   const [visibleLists, setVisibleLists] = useState<string[]>(['1', '2']);
@@ -14,9 +14,7 @@ export const Sidebar = () => {
   return (
     <div className="w-64  h-[calc(100vh-4rem)] py-3 px-2 gap-6 flex flex-col">
       <div>
-        <Button variant="text" leftIcon={<PlusIcon className="text-white w-5 h-5" />}>
-          Create task
-        </Button>
+        <CreateNewTask />
       </div>
 
       <nav className="flex flex-col gap-2">

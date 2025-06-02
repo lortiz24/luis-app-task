@@ -4,8 +4,8 @@
 @theme {
   /* Colors */
   --color-secondary: #220490;
-  --color-bg-1: #191919;
-  --color-bg-2: #121212;
+  --color-bg-1: #111827;
+  --color-bg-2: #1F2937;
   --color-text: #f6f8fe;
   --color-primary-50: #deaef9;
   --color-primary-100: #d69bf8;
@@ -18,7 +18,5 @@
   --color-primary-800: #5b0a8a;
   --color-primary-900: #420764;
   --color-primary-950: #380655;
-  --color-gray: #a6a6a6;
-  /* Breakpoints */
 }
 
