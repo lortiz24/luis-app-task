@@ -7,8 +7,11 @@ export const CreateNewTask = () => {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <Button variant="text" leftIcon={<PlusIcon className="text-white w-5 h-5" />}>
-          Create task
+        <Button variant="text">
+          <span className='flex items-center gap-2'>
+            <PlusIcon className="text-white w-5 h-5" />
+            Create task
+          </span>
         </Button>
       </Dialog.Trigger>
       <Dialog.Portal>

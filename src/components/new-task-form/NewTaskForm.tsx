@@ -6,6 +6,7 @@ import { TaskDateField } from './TaskDateField';
 import { TaskAllDayField } from './TaskAllDayField';
 import { TaskListSelectField } from './TaskListSelectField';
 import type { IList } from '../../interfaces/list.interface';
+import { Button } from '../ui/Button';
 
 interface NewTaskFormProps {
   lists: IList[];
@@ -39,12 +40,9 @@ export const NewTaskForm: React.FC<NewTaskFormProps> = ({ lists }) => {
       <TaskDateField value={form.date} onChange={onInputChange} />
       <TaskAllDayField checked={form.allDay} onChange={onInputChange} />
       <TaskListSelectField value={form.listId} onChange={onListChange} lists={lists} />
-      <button
-        type="submit"
-        className="w-full mt-4 bg-primary-dark hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded-md transition-colors"
-      >
+      <Button variant="solid" type="submit" className='w-full'>
         Crear tarea
-      </button>
+      </Button>
     </Form.Root>
   );
 };
