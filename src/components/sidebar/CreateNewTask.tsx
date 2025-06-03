@@ -7,7 +7,7 @@ export const CreateNewTask = () => {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <Button variant="text">
+        <Button variant="solid">
           <span className="flex items-center gap-2">
             <PlusIcon className="text-white w-5 h-5" />
             Create task

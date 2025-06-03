@@ -89,7 +89,7 @@ export default function LoginPage() {
                 onClick={onNavigateToRegister}
                 className="text-primary-light hover:text-blue-300 underline font-medium"
               >
-                Regístrate aquí
+                Register
               </button>
             </div>
           </CardFooter>

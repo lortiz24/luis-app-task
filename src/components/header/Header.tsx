@@ -51,7 +51,7 @@ export const Header = ({ onIconClick }: HeaderProps) => {
             <p className="text-xs text-alt-text">{user?.email}</p>
           </div>
         </div>
-        <Button variant="text" size="sm" onClick={onLogout}>
+        <Button variant="blur" size="sm" onClick={onLogout}>
           <ArrowRightEndOnRectangleIcon className="h-4 w-4 mr-2" />
           <span className="hidden sm:inline">Cerrar Sesión</span>
           <span className="sm:hidden">Salir</span>
