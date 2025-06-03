@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { Loader } from './Loader';
 
 // Tipos para variantes y tamaños
-export type ButtonVariant = 'solid' | 'secondary' | 'danger' | 'text';
+export type ButtonVariant = 'solid' | 'secondary' | 'danger' | 'text' | 'transparent' | 'outline' | 'blur';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -22,6 +22,9 @@ const variantClasses: Record<ButtonVariant, string> = {
   secondary: 'bg-secondary-dark/80 text-white hover:bg-secondary-700/80 focus:ring-secondary-normal',
   danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
   text: 'bg-transparent text-primary hover:underline shadow-none p-0 focus:ring-primary-normal',
+  transparent: 'bg-transparent text-primary hover:bg-primary-700/10 focus:ring-primary-normal border-none shadow-none',
+  outline: 'bg-transparent text-primary border border-primary-dark hover:bg-primary-700/10 focus:ring-primary-normal',
+  blur: 'bg-white/10 text-white border border-white/20 backdrop-blur-md hover:bg-white/20 hover:border-white/40',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
