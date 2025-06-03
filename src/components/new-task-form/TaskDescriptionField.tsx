@@ -1,7 +1,7 @@
 import { Label } from '../ui/label';
-import { Input } from '../ui/input';
 import { Form } from 'radix-ui';
 import * as React from 'react';
+import { TextArea } from '../ui/TextArea';
 
 interface TaskDescriptionFieldProps {
   value: string;
@@ -15,8 +15,8 @@ export const TaskDescriptionField: React.FC<TaskDescriptionFieldProps> = ({ valu
         Descripción
       </Label>
       <Form.Control asChild onChange={onChange} value={value}>
-        <Input id="description" name="description" type="text" placeholder="Opcional" />
+        <TextArea id="description" name="description" placeholder="Opcional" />
       </Form.Control>
     </div>
   </Form.Field>
-); 
+);
