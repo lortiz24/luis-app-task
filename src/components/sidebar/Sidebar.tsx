@@ -3,10 +3,12 @@ import { MenuLink } from '../menu-link/MenuLink';
 import { MenuListAcordeon } from '../menu-list-accordion/MenuListAcordeon';
 import { useState } from 'react';
 import { CreateNewTask } from './CreateNewTask';
+import { useTaskStoreBase } from '../../store/store';
 
 export const Sidebar = () => {
   const [visibleLists, setVisibleLists] = useState<string[]>(['1', '2']);
-
+  const userLists = useTaskStoreBase((state) => state.lists);
+  
   const handleToggleList = (id: string) => {
     setVisibleLists((prev) => (prev.includes(id) ? prev.filter((lid) => lid !== id) : [...prev, id]));
   };
@@ -22,16 +24,7 @@ export const Sidebar = () => {
 
         <MenuLink title="Agenda" to="/agenda" leftIcon={<CalendarIcon className="text-white w-5 h-5" />} />
       </nav>
-      <MenuListAcordeon
-        title="Lists"
-        lists={[
-          { id: '1', title: 'Lista 1' },
-          { id: '2', title: 'Lista 2' },
-          { id: '3', title: 'Lista 3' },
-        ]}
-        visibleLists={visibleLists}
-        onToggleList={handleToggleList}
-      />
+      <MenuListAcordeon title="Lists" lists={userLists} visibleLists={visibleLists} onToggleList={handleToggleList} />
     </div>
   );
 };

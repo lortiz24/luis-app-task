@@ -2,11 +2,16 @@ import { Header } from '../components/header/Header';
 import { Sidebar } from '../components/sidebar/Sidebar';
 import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
+import { useUserLists } from '../hooks/useUserLists';
+import { useTaskStoreBase } from '../store/store';
 
 export const AppLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const user = useTaskStoreBase((state) => state.user);
 
   const toggleSidebar = () => setSidebarOpen((open) => !open);
+
+  useUserLists(user?.id ?? null);
 
   return (
     <div className="flex flex-col h-screen bg-bg-1 text-white">
