@@ -78,7 +78,7 @@ export default function LoginPage() {
           </CardContent>
 
           <CardFooter className="flex flex-col space-y-4">
-            <Button type="submit" className="w-full bg-primary-dark hover:bg-blue-700 text-white" disabled={loadingLogin}>
+            <Button type="submit" className="w-full" disabled={loadingLogin}>
               {loadingLogin ? 'Iniciando sesión...' : 'Iniciar Sesión'}
             </Button>
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CardOfTask } from '../components/cart-of-task/CardOfTask';
 import type { ITask } from '../interfaces/task.interface';
+import { Button } from '../components/ui/Button';
 
 const initialListsData = [
   {
@@ -93,8 +94,12 @@ export const ListPage = () => {
 
   return (
     <div className="px-9 flex gap-6">
-      {' '}
-      {/* Usamos flex y gap para mostrar las tarjetas una al lado de la otra */}
+      <div className="">
+        <Button variant="solid">Hola</Button>
+        <Button variant="secondary">Hola</Button>
+        <Button variant="danger">Hola</Button>
+        <Button variant="text">Hola</Button>
+      </div>
       {listsData.map((listData) => (
         <CardOfTask
           key={listData.list.id} // Clave importante para la lista

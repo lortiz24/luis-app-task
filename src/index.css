@@ -16,12 +16,33 @@
   --color-primary-900: #03183b;
   --color-primary-950: #010c1d;
 
+
+  --color-secondary-50: #fef3eb;
+  --color-secondary-100: #fee7d7;
+  --color-secondary-200: #fdd0af;
+  --color-secondary-300: #fcbb8d;
+  --color-secondary-400: #fba365;
+  --color-secondary-500: #fa8c3d;
+  --color-secondary-600: #f97316;
+  --color-secondary-700: #c75605;
+  --color-secondary-800: #863a03;
+  --color-secondary-900: #411c02;
+  --color-secondary-950: #230f01;
+
   /** Principal*/
 
   --color-primary-normal: var(--color-primary-500);
   --color-primary-dark: var(--color-primary-600);
   --color-primary-light: var(--color-primary-400);
   --color-primary-bg: var(--color-primary-950);
+
+  /** Secondary */
+
+  --color-secondary-normal: var(--color-secondary-500);
+  --color-secondary-dark: var(--color-secondary-600);
+  --color-secondary-light: var(--color-secondary-400);
+  --color-secondary-bg: var(--color-secondary-950);
+
   /** Backgrounds */
 
   --color-bg-1: #111827;
