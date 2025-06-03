@@ -44,7 +44,7 @@ export default function Register() {
           </CardDescription>
         </CardHeader>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} autoComplete="off">
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="fullName" className="text-gray-200">
@@ -57,7 +57,8 @@ export default function Register() {
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 required
-                className="bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
+                className="bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-primary-normal focus:ring-primary-normal"
+                autoComplete="off"
               />
             </div>
 
@@ -73,6 +74,7 @@ export default function Register() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
+                autoComplete="off"
               />
             </div>
 
@@ -90,6 +92,7 @@ export default function Register() {
                   required
                   minLength={6}
                   className="bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 pr-10"
+                  autoComplete="new-password"
                 />
                 <button
                   type="button"

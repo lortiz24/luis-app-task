@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Form } from 'radix-ui';
-import * as Select from '@radix-ui/react-select';
-import { Input } from '../ui/input';
-import { Label } from '../ui/label';
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
+import { TaskTitleField } from './TaskTitleField';
+import { TaskDescriptionField } from './TaskDescriptionField';
+import { TaskDateField } from './TaskDateField';
+import { TaskAllDayField } from './TaskAllDayField';
+import { TaskListSelectField } from './TaskListSelectField';
 import type { IList } from '../../interfaces/list.interface';
 
 interface NewTaskFormProps {
@@ -11,112 +12,33 @@ interface NewTaskFormProps {
 }
 
 export const NewTaskForm: React.FC<NewTaskFormProps> = ({ lists }) => {
-  const [allDay, setAllDay] = React.useState(false);
+  const [form, setForm] = React.useState({
+    title: '',
+    description: '',
+    date: '',
+    allDay: false,
+    listId: '',
+  });
+
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, type, checked } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };
+
+  const onListChange = (value: string) => {
+    setForm((prev) => ({ ...prev, listId: value }));
+  };
 
   return (
     <Form.Root className="space-y-4">
-      {/* Título */}
-      <Form.Field name="title">
-        <div className="space-y-1">
-          <Label htmlFor="title" className="text-gray-200">
-            Título de la tarea
-          </Label>
-          <Form.Control asChild>
-            <Input id="title" name="title" type="text" placeholder="Ej: Comprar pan" required />
-          </Form.Control>
-        </div>
-      </Form.Field>
-
-      {/* Descripción */}
-      <Form.Field name="description">
-        <div className="space-y-1">
-          <Label htmlFor="description" className="text-gray-200">
-            Descripción
-          </Label>
-          <Form.Control asChild>
-            <Input id="description" name="description" type="text" placeholder="Opcional" />
-          </Form.Control>
-        </div>
-      </Form.Field>
-
-      {/* Fecha */}
-      <Form.Field name="date">
-        <div className="space-y-1">
-          <Label htmlFor="date" className="text-gray-200">
-            Fecha programada
-          </Label>
-          <Form.Control asChild>
-            <Input id="date" name="date" type="date" required />
-          </Form.Control>
-        </div>
-      </Form.Field>
-
-      {/* Todo el día */}
-      <Form.Field name="allDay">
-        <div className="flex items-center gap-2">
-          <Form.Control asChild>
-            <input
-              id="allDay"
-              name="allDay"
-              type="checkbox"
-              checked={allDay}
-              onChange={(e) => setAllDay(e.target.checked)}
-              className="accent-primary-dark w-4 h-4 rounded focus:ring focus:ring-primary-light"
-            />
-          </Form.Control>
-          <Label htmlFor="allDay" className="text-gray-200 select-none cursor-pointer">
-            Evento de todo el día
-          </Label>
-        </div>
-      </Form.Field>
-
-      {/* Select de listas */}
-      <Form.Field name="listId">
-        <div className="space-y-1">
-          <Label htmlFor="listId" className="text-gray-200">
-            Lista
-          </Label>
-          <Form.Control asChild>
-            <Select.Root name="listId" required>
-              <Select.Trigger
-                className="w-full flex items-center justify-between rounded-md border border-gray-700 bg-gray-800 px-3 py-2 text-gray-100 shadow-sm focus:border-primary-normal focus:ring-2 focus:ring-primary-normal sm:text-sm placeholder-gray-400"
-                id="listId"
-              >
-                <Select.Value placeholder="Selecciona una lista" />
-                <Select.Icon>
-                  <ChevronDownIcon />
-                </Select.Icon>
-              </Select.Trigger>
-              <Select.Portal>
-                <Select.Content className="z-50 bg-gray-800 border border-gray-700 rounded-md shadow-lg">
-                  <Select.ScrollUpButton className="flex items-center justify-center h-6 text-gray-400">
-                    <ChevronUpIcon />
-                  </Select.ScrollUpButton>
-                  <Select.Viewport className="p-1">
-                    {lists.map((list) => (
-                      <Select.Item
-                        key={list.id}
-                        value={list.id}
-                        className="cursor-pointer select-none rounded px-3 py-2 text-gray-100 hover:bg-primary-dark/20 focus:bg-primary-dark/30 data-[state=checked]:bg-primary-dark/40 flex items-center gap-2"
-                      >
-                        <Select.ItemText>{list.title}</Select.ItemText>
-                        <Select.ItemIndicator className="ml-auto text-primary-light">
-                          <CheckIcon />
-                        </Select.ItemIndicator>
-                      </Select.Item>
-                    ))}
-                  </Select.Viewport>
-                  <Select.ScrollDownButton className="flex items-center justify-center h-6 text-gray-400">
-                    <ChevronDownIcon />
-                  </Select.ScrollDownButton>
-                </Select.Content>
-              </Select.Portal>
-            </Select.Root>
-          </Form.Control>
-        </div>
-      </Form.Field>
-
-      {/* Botón de submit */}
+      <TaskTitleField value={form.title} onChange={onInputChange} />
+      <TaskDescriptionField value={form.description} onChange={onInputChange} />
+      <TaskDateField value={form.date} onChange={onInputChange} />
+      <TaskAllDayField checked={form.allDay} onChange={onInputChange} />
+      <TaskListSelectField value={form.listId} onChange={onListChange} lists={lists} />
       <button
         type="submit"
         className="w-full mt-4 bg-primary-dark hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded-md transition-colors"
