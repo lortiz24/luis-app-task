@@ -27,7 +27,7 @@ export const AppRouter = () => {
   if (checking) {
     return (
       <div className="min-h-screen bg-bg-1 flex items-center justify-center">
-        <Loader />
+        <Loader  size={48}/>
       </div>
     );
   }

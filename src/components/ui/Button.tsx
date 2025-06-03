@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Slot } from '@radix-ui/react-slot';
 import clsx from 'clsx';
+import { Loader } from './Loader';
 
 // Tipos para variantes y tamaños
 export type ButtonVariant = 'solid' | 'secondary' | 'danger' | 'text';
@@ -42,9 +42,6 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   ...props
 }) => {
-  const Comp = asChild ? Slot : 'button';
-  const contentRef = React.useRef<HTMLSpanElement>(null);
-
   return (
     <button
       className={clsx(
@@ -59,8 +56,10 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled || loading}
       {...props}
     >
-      {loading && <span className="absolute inset-0 flex items-center justify-center text-white">Cargando...</span>}
-      {children}
+      {/* {loading && <span className="absolute inset-0 flex items-center justify-center text-white">Cargando...</span>}
+      {children} */}
+      <span className={clsx({ invisible: loading }, 'flex items-center justify-center')}>{children}</span>
+      {loading && <span className="absolute inset-0 flex items-center justify-center text-white"><Loader/></span>}
     </button>
   );
 };
